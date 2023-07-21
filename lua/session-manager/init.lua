@@ -114,6 +114,7 @@ function session_manager.setup(conf)
 		{
 			group = augroup,
 			pattern = "*",
+			nested = true,
 			callback = autocmd_load_session
 		}
 	)
@@ -135,7 +136,7 @@ function session_manager.load_session()
 		return false
 	end
 
-	vim.cmd(string.format("silent! source %s", get_session_path()))
+	vim.cmd(string.format("silent source %s", get_session_path()))
 end
 
 
