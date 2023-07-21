@@ -4,10 +4,6 @@ local session_manager = {}
 local config = {
 	defaults = {
 		session_path = ".nvim/Session.vim",
-		autocmd_load_ignore_filetypes = {
-			"gitcommit",
-			"gitrebase"
-		},
 		save_session_if_not_exist = false,
 		load_session_if_exist = true
 	}
