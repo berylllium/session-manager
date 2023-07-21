@@ -4,6 +4,10 @@ local session_manager = {}
 local config = {
 	defaults = {
 		session_path = ".nvim/Session.vim",
+		autocmd_load_ignore_filetypes = {
+			"gitcommit",
+			"gitrebase"
+		},
 		save_session_if_not_exist = false,
 		load_session_if_exist = true
 	}
@@ -79,7 +83,12 @@ local function autocmd_save_session()
 end
 
 local function autocmd_load_session()
-	session_manager.load_session()
+	local opened_with_args = next(vim.fn.argv()) ~= nil
+	local reading_from_stdin = vim.g.in_pager_mode == 1
+
+	if not opened_with_args and not reading_from_stdin then
+		session_manager.load_session()
+	end
 end
 
 -- Plugin exported functions.
@@ -118,8 +127,7 @@ end
 
 function session_manager.load_session()
 	if vim.fn.filereadable(get_session_path()) == 0 then
-		vim.notify(string.format("session-manager: file `%s` does not exist.", get_session_path()))
-
+		--vim.notify(string.format("session-banager: file `%s` does not exist.", get_session_path()))
 		return false
 	end
 
