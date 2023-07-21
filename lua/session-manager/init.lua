@@ -47,11 +47,15 @@ local function split_path(path)
 end
 
 local function ensure_path_is_safe(path)
+	local s = ""
+
 	if is_windows then
-		return path:gsub("/", path_sep)
+		s = path:gsub("/", path_sep)
 	else
-		return path:gsub("\\", path_sep)
+		s = path:gsub("\\", path_sep)
 	end
+
+	return s
 end
 
 local function ensure_session_path()
