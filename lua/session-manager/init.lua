@@ -77,7 +77,7 @@ local function get_session_path()
 end
 
 local function autocmd_save_session()
-	if vim.fn.filereadable(get_session_path()) == 0 then
+	if vim.fn.filereadable(get_session_path()) == 1 then
 		session_manager.save_session()
 	end
 end
