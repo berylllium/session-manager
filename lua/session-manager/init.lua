@@ -72,6 +72,10 @@ local function get_session_path()
 	return ensure_path_is_safe(config.session_path)
 end
 
+local function does_saved_session_exist()
+	return vim.fn.filereadable(get_session_path()) == 1
+end
+
 local function is_buffer_suitable()
 	local opened_with_args = next(vim.fn.argv()) ~= nil
 	local reading_from_stdin = vim.g.in_pager_mode == 1
@@ -80,13 +84,13 @@ local function is_buffer_suitable()
 end
 
 local function autocmd_save_session()
-	if vim.fn.filereadable(get_session_path()) == 1 and is_buffer_suitable() then
+	if (does_saved_session_exist() or config.save_session_if_not_exist) and is_buffer_suitable() then
 		session_manager.save_session()
 	end
 end
 
 local function autocmd_load_session()
-	if is_buffer_suitable() then
+	if is_buffer_suitable() and config.load_session_if_exist then
 		session_manager.load_session()
 	end
 end
