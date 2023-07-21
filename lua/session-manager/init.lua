@@ -117,6 +117,10 @@ function session_manager.setup(conf)
 			callback = autocmd_load_session
 		}
 	)
+
+	vim.cmd([[
+		command! SessionManagerSave lua require("session-manager").save_session()
+	]])
 end
 
 function session_manager.save_session()
