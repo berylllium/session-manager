@@ -15,7 +15,7 @@ vim.call("plug#begin")
 
 local Plug = vim.fn["plug#"]
 
-Plug ("berylllium/session-manager", {['tag'] = 'v1.0.0'})
+Plug ("berylllium/session-manager", {['tag'] = 'v1.0.1'})
 
 vim.call("plug#end")
 ```
