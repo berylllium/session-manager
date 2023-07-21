@@ -127,7 +127,7 @@ end
 function session_manager.save_session()
 	ensure_session_path()
 
-	vim.cmd(string.format("mksession %s", get_session_path()))
+	vim.cmd(string.format("mksession! %s", get_session_path()))
 end
 
 function session_manager.load_session()
