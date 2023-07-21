@@ -15,7 +15,7 @@ vim.call("plug#begin")
 
 local Plug = vim.fn["plug#"]
 
-Plug "berylllium/session-manager"
+Plug ("berylllium/session-manager", {['tag'] = 'v1.0.0'})
 
 vim.call("plug#end")
 ```
@@ -24,8 +24,8 @@ vim.call("plug#end")
 
 The default configuration is as follows:
 
-|           Entry           |    Default Value    |                                          Description                                          |
-|:-------------------------:|:-------------------:|:---------------------------------------------------------------------------------------------:|
+|             Entry             |    Default Value    |                                          Description                                          |
+|:-----------------------------:|:-------------------:|:---------------------------------------------------------------------------------------------:|
 | session\_path                 | ".nvim/Session.vim" | The path to the generated session file. Relative to the current working directory.            |
 | save\_session\_if\_not\_exist | false               | Automatically save the current session on exit even when there is no currently saved session. |
 | load\_session\_if\_exist      | true                | Automatically load the currently saved session on entry if it exists.                         |
